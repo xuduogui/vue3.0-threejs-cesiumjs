@@ -2,7 +2,7 @@
  * @Author: xuziyong
  * @Date: 2021-03-31 01:38:34
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-04-04 23:36:47
+ * @LastEditTime: 2021-04-05 01:05:59
  * @Description: TODO
 -->
 
@@ -23,14 +23,17 @@
 </style>
 
 <script lang="ts">
+// TODO  warning  in ./node_modules/cesium/Source/Core/buildModuleUrl.js
+// Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+
 import { Options, setup, Vue } from "vue-class-component";
 import * as Cesium from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import { onMounted, Ref, ref, toRef } from "vue";
+import { onMounted, Ref, ref, ShallowUnwrapRef, toRef } from "vue";
 
 interface DeclareEventBus {
   buildShowControl: {
-    (): any;
+    (): void;
   };
 }
 
@@ -44,7 +47,9 @@ interface DeclareDomSetUpReturn {
  */
 const domSetUp = (domRef: Ref<HTMLElement | null>): DeclareDomSetUpReturn => {
   const EventBus: DeclareEventBus = {
-    buildShowControl: () => console.log("no event detail"),
+    buildShowControl: () => {
+      console.log("no event detail");
+    },
   };
 
   const renderView = (): void => {
@@ -132,7 +137,7 @@ const domSetUp = (domRef: Ref<HTMLElement | null>): DeclareDomSetUpReturn => {
     // Move the camera to the new building.
     viewer.flyTo(newBuildingTileset);
 
-    EventBus.buildShowControl = function () {
+    EventBus.buildShowControl = () => {
       newBuildingTileset.show = !newBuildingTileset.show;
     };
   };
@@ -154,9 +159,11 @@ export default class VisualizeProposedBuilding extends Vue {
   /**
    * setup
    */
-  domSetUp = setup(() => domSetUp(toRef(this, "domRef")));
+  domSetUp: ShallowUnwrapRef<DeclareDomSetUpReturn> = setup(() =>
+    domSetUp(toRef(this, "domRef"))
+  );
 
-  get EventBus() {
+  get EventBus(): DeclareEventBus {
     return this.domSetUp.EventBus;
   }
 }
