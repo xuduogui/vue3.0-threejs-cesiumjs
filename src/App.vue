@@ -2,7 +2,7 @@
  * @Author: xuziyong
  * @Date: 2021-03-27 02:14:25
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-03-31 01:49:47
+ * @LastEditTime: 2021-04-02 01:13:08
  * @Description: TODO
 -->
 <template>
@@ -19,6 +19,7 @@
     <br />
     <p>Cesiumjs</p>
     <router-link to="/cesiumjsQuickRun">cesiumjsQuickRun</router-link>|
+    <router-link to="/FlightTracker">FlightTracker</router-link>|
     <router-link to="/VisualizeProposedBuilding"
       >VisualizeProposedBuilding</router-link
     >|

@@ -4,7 +4,7 @@ import { RouteRecordRaw } from "vue-router";
  * @Author: xuziyong
  * @Date: 2021-03-28 14:25:06
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-03-31 01:41:00
+ * @LastEditTime: 2021-04-02 01:12:50
  * @Description: TODO
  */
 export const cesium: Array<RouteRecordRaw> = [
@@ -30,6 +30,18 @@ export const cesium: Array<RouteRecordRaw> = [
       import(
         /* webpackChunkName: "CreateScene" */
         "../../../views/cesiumjs/startedTutorials/VisualizeProposedBuilding.vue"
+      ),
+  },
+  {
+    path: "/FlightTracker",
+    name: "FlightTracker",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(
+        /* webpackChunkName: "CreateScene" */
+        "../../../views/cesiumjs/startedTutorials/FlightTracker.vue"
       ),
   },
 ];
