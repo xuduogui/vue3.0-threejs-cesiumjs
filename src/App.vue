@@ -2,7 +2,7 @@
  * @Author: xuziyong
  * @Date: 2021-03-27 02:14:25
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-04-02 01:13:08
+ * @LastEditTime: 2021-04-06 23:35:16
  * @Description: TODO
 -->
 <template>
@@ -22,7 +22,7 @@
     <router-link to="/FlightTracker">FlightTracker</router-link>|
     <router-link to="/VisualizeProposedBuilding"
       >VisualizeProposedBuilding</router-link
-    >|
+    >| <router-link to="/OurFirstEntity">OurFirstEntity</router-link>|
   </div>
   <router-view />
 </template>
