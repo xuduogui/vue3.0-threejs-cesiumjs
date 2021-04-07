@@ -2,7 +2,7 @@
  * @Author: xuziyong
  * @Date: 2021-04-02 01:09:07
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-04-07 02:17:35
+ * @LastEditTime: 2021-04-08 01:36:37
  * @Description: TODO
 -->
 <template>
@@ -16,6 +16,19 @@ import * as Cesium from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { onMounted, Ref, ref, toRef } from "vue";
 import { PolygonHierarchy } from "cesium";
+
+interface HashStore {
+  [propName: string]: boolean;
+}
+
+interface TypePick<T> {
+  id: number;
+  primitive: T;
+}
+
+interface TypePrimitive {
+  id: number;
+}
 
 const utilsDemo = {
   /**
@@ -44,13 +57,13 @@ const utilsDemo = {
    * @returns {Entity[]} The picked entities or undefined.
    */
   drillPickEntities(viewer: Cesium.Viewer, windowPosition: Cesium.Cartesian2) {
-    var i;
-    var entity;
-    var picked;
+    var i: number;
+    var entity: Cesium.Entity;
+    var picked: TypePick<TypePrimitive>;
     var pickedPrimitives = viewer.scene.drillPick(windowPosition);
     var length = pickedPrimitives.length;
     var result = [];
-    var hash: any = {};
+    var hash: HashStore = {};
 
     for (i = 0; i < length; i++) {
       picked = pickedPrimitives[i];

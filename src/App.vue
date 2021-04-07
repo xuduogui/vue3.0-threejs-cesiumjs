@@ -2,7 +2,7 @@
  * @Author: xuziyong
  * @Date: 2021-03-27 02:14:25
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-04-06 23:35:16
+ * @LastEditTime: 2021-04-08 02:38:31
  * @Description: TODO
 -->
 <template>
@@ -23,6 +23,8 @@
     <router-link to="/VisualizeProposedBuilding"
       >VisualizeProposedBuilding</router-link
     >| <router-link to="/OurFirstEntity">OurFirstEntity</router-link>|
+    <router-link to="/ThreeModel">ThreeModel</router-link>|
+    <router-link to="/LookAtPointAndAround">LookAtPointAndAround</router-link>|
   </div>
   <router-view />
 </template>
